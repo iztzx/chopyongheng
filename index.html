@@ -462,34 +462,16 @@
         }
         
         // --- SHOP LOGIC ---
-        function renderProducts() {
-            const productList = document.getElementById('product-list');
-            if (!productList) return;
-            productList.innerHTML = products.map(p => `
-                <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden flex flex-col">
-                    <img src="${p.img}" alt="${p.name}" class="w-full h-48 object-cover">
-                    <div class="p-4 flex flex-col flex-grow">
-                        <h3 class="text-lg font-bold text-amber-400 flex-grow">${p.name}</h3>
-                        <p class="mt-2 text-xl font-semibold">RM ${p.price.toFixed(2)}</p>
-                        <button class="add-to-cart-btn mt-4 w-full btn btn-primary" data-id="${p.id}">Add to Cart</button>
-                    </div>
-                </div>
-            `).join('');
-        }
-        
+        // Update addToCart to always add a new line for the same product (if you want to allow duplicates)
         function addToCart(productId) {
             const product = products.find(p => p.id == productId);
-            const cartItem = cart.find(item => item.id == productId);
-
-            if (cartItem) {
-                cartItem.quantity++;
-            } else {
-                cart.push({ ...product, quantity: 1 });
-            }
+            // Always add as a new line (for true "individual" lines)
+            cart.push({ ...product, quantity: 1 });
             updateCartUI();
             openCart();
         }
 
+        // Update updateCartUI to show quantity controls
         function updateCartUI() {
             const cartItemsContainer = document.getElementById('cart-items');
             const cartSubtotalEl = document.getElementById('cart-subtotal');
@@ -499,17 +481,20 @@
                 cartItemsContainer.innerHTML = `<p class="text-gray-400">Your cart is empty.</p>`;
                 checkoutBtn.disabled = true;
             } else {
-                cartItemsContainer.innerHTML = cart.map(item => `
+                cartItemsContainer.innerHTML = cart.map((item, idx) => `
                     <div class="flex items-center justify-between py-2 border-b border-gray-700">
                         <div>
                             <p class="font-semibold">${item.name}</p>
-                            <p class="text-sm text-gray-400">RM ${item.price.toFixed(2)} x ${item.quantity}</p>
+                            <p class="text-sm text-gray-400">RM ${item.price.toFixed(2)}</p>
                         </div>
                         <div class="flex items-center gap-2">
-                           <span class="font-bold">RM ${(item.price * item.quantity).toFixed(2)}</span>
-                           <button class="remove-from-cart-btn text-red-500 hover:text-red-400 p-1" data-id="${item.id}">
-                               <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" /></svg>
-                           </button>
+                            <button class="qty-btn px-2 py-1 bg-gray-700 rounded text-white" data-idx="${idx}" data-action="decrease">-</button>
+                            <input type="number" min="1" class="qty-input w-12 text-center bg-gray-700 rounded text-white" value="${item.quantity}" data-idx="${idx}">
+                            <button class="qty-btn px-2 py-1 bg-gray-700 rounded text-white" data-idx="${idx}" data-action="increase">+</button>
+                            <span class="font-bold ml-2">RM ${(item.price * item.quantity).toFixed(2)}</span>
+                            <button class="remove-from-cart-btn text-red-500 hover:text-red-400 p-1" data-idx="${idx}">
+                                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" /></svg>
+                            </button>
                         </div>
                     </div>
                 `).join('');
@@ -519,29 +504,44 @@
             const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
             cartSubtotalEl.textContent = `RM ${subtotal.toFixed(2)}`;
         }
-        
-        function removeFromCart(productId) {
-            cart = cart.filter(item => item.id != productId);
+
+        // Remove by index (since now lines can be duplicated)
+        function removeFromCart(idx) {
+            cart.splice(idx, 1);
             updateCartUI();
         }
 
-        function openCart() {
-            document.getElementById('cart-sidebar').classList.remove('translate-x-full');
-            document.getElementById('cart-overlay').classList.remove('hidden');
+        // Quantity change handler
+        function changeCartQuantity(idx, newQty) {
+            if (newQty < 1) return;
+            cart[idx].quantity = newQty;
+            updateCartUI();
         }
 
-        function closeCart() {
-            document.getElementById('cart-sidebar').classList.add('translate-x-full');
-            document.getElementById('cart-overlay').classList.add('hidden');
-        }
-        
+        // --- SHOP EVENT LISTENERS ---
         function attachShopEventListeners() {
             document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => addToCart(e.currentTarget.dataset.id));
             });
             document.getElementById('cart-items').addEventListener('click', (e) => {
                 if (e.target.closest('.remove-from-cart-btn')) {
-                    removeFromCart(e.target.closest('.remove-from-cart-btn').dataset.id);
+                    removeFromCart(Number(e.target.closest('.remove-from-cart-btn').dataset.idx));
+                }
+                if (e.target.classList.contains('qty-btn')) {
+                    const idx = Number(e.target.dataset.idx);
+                    const action = e.target.dataset.action;
+                    let qty = cart[idx].quantity;
+                    if (action === 'increase') qty++;
+                    if (action === 'decrease' && qty > 1) qty--;
+                    changeCartQuantity(idx, qty);
+                }
+            });
+            document.getElementById('cart-items').addEventListener('input', (e) => {
+                if (e.target.classList.contains('qty-input')) {
+                    const idx = Number(e.target.dataset.idx);
+                    let qty = parseInt(e.target.value, 10);
+                    if (isNaN(qty) || qty < 1) qty = 1;
+                    changeCartQuantity(idx, qty);
                 }
             });
             document.getElementById('checkout-button')?.addEventListener('click', showCheckoutModal);
