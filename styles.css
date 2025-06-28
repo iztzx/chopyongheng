@@ -30,7 +30,7 @@
 }
 
 body {
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     line-height: 1.6;
     color: var(--charcoal-black);
     background-color: var(--cream-white);
@@ -38,7 +38,7 @@ body {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-sans);
+    font-family: var(--font-serif);
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 1rem;
