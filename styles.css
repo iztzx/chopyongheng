@@ -1186,3 +1186,12 @@ a:focus {
     animation: fadeIn 0.6s ease-out;
 }
 
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+  }
+  .nav-menu.active {
+    display: block;
+  }
+}
+
