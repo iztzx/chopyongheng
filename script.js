@@ -586,7 +586,9 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-document.getElementById('hamburger').addEventListener('click', () => {
-    document.getElementById('nav-menu').classList.toggle('active');
-});
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.querySelector('.nav-menu');
 
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
