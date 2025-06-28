@@ -3,723 +3,406 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chop Yong Heng (荣兴柴炭) - Heritage Charcoal</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
+    <title>Chop Yong Heng (荣兴柴炭) - Heritage Charcoal Since 1940s</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide-react@latest/dist/lucide.min.js"></script>
-
-    <style>
-        /* Custom styles */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #111827; /* bg-gray-900 */
-            color: #f3f4f6; /* text-gray-200 */
-        }
-        .font-serif-sc {
-            font-family: 'Noto Serif SC', serif;
-        }
-        .nav-link {
-            @apply px-3 py-2 text-gray-300 transition-colors duration-300 hover:text-white hover:bg-gray-700 rounded-md;
-        }
-        .nav-link.active {
-            @apply bg-gray-900 text-white;
-        }
-        .btn {
-            @apply px-6 py-3 font-bold rounded-lg transition-transform duration-200 hover:scale-105;
-        }
-        .btn-primary {
-            @apply bg-amber-600 text-white hover:bg-amber-700;
-        }
-        .btn-secondary {
-            @apply bg-gray-600 text-white hover:bg-gray-700;
-        }
-        /* Page transition */
-        #page-content {
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
-<body class="bg-gray-900 text-gray-200">
-
-    <!-- Header & Navigation -->
-    <header class="bg-gray-800/80 backdrop-blur-sm sticky top-0 z-50 shadow-lg">
-        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex items-center">
-                    <a href="#home" class="text-white text-2xl font-bold font-serif-sc">
-                        荣兴柴炭
-                        <span class="block text-xs font-sans tracking-widest text-amber-400">CHOP YONG HENG</span>
-                    </a>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-chinese">荣</span>
+                <div class="logo-text">
+                    <span class="logo-main">Chop Yong Heng</span>
+                    <span class="logo-sub">荣兴柴炭</span>
                 </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#home" class="nav-link active">Home</a>
-                        <a href="#about" class="nav-link">About</a>
-                        <a href="#news" class="nav-link">News</a>
-                        <a href="#shop" class="nav-link">Shop</a>
-                        <a href="#access" class="nav-link">Access</a>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#news" class="nav-link">News</a>
+                <a href="#shop" class="nav-link">Shop</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <div class="cart-icon" onclick="toggleCart()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="m1 1 4 4 2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count" id="cart-count">0</span>
+                </div>
+            </div>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Heritage Reborn, Tradition Renewed</h1>
+            <p class="hero-subtitle">Chop Yong Heng (荣兴柴炭) - Nearly a century of charcoal excellence, now serving the modern kitchen with authentic flavor and convenient delivery.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToSection('shop')">Shop Now</button>
+                <button class="btn btn-secondary" onclick="scrollToSection('about')">Our Story</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="assets/charcoal_fire.jpg" alt="Traditional charcoal cooking" loading="lazy">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">A Legacy of Fire and Flavor</h2>
+                    <p class="about-description">
+                        From the bustling streets of Johor Bahru to your modern kitchen, Chop Yong Heng represents an unbroken chain of tradition. What began as a necessity in every household has evolved into a specialty craft.
+                    </p>
+                    <p class="about-description">
+                        Our charcoal doesn't just fuel your cooking—it enhances every dish with the subtle smokiness that gas and electric simply cannot match.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <h3 class="feature-title">Traditional Methods</h3>
+                            <p class="feature-text">Handpicked charcoal made from sustainably sourced mangrove wood</p>
+                        </div>
+                        <div class="feature">
+                            <h3 class="feature-title">Convenient Delivery</h3>
+                            <p class="feature-text">Scheduled delivery at 9 AM, 11 AM, or 2 PM, Monday to Saturday</p>
+                        </div>
+                        <div class="feature">
+                            <h3 class="feature-title">Nearly a Century</h3>
+                            <p class="feature-text">Nearly a century of traditional charcoal-making expertise</p>
+                        </div>
+                        <div class="feature">
+                            <h3 class="feature-title">Three Generations</h3>
+                            <p class="feature-text">Three generations dedicated to preserving authentic flavors</p>
+                        </div>
                     </div>
                 </div>
-                <div class="md:hidden flex items-center">
-                     <button id="cart-button-mobile" class="p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c.51 0 .962-.344 1.087-.849l1.875-6.375a.532.532 0 00-.487-.651H5.25l-.487-1.835A.532.532 0 004.263 2.25H2.25" /></svg>
-                    </button>
-                    <button id="mobile-menu-button" class="ml-2 p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                        <span class="sr-only">Open main menu</span>
-                        <svg class="h-6 w-6" id="menu-open-icon" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                        </svg>
-                        <svg class="hidden h-6 w-6" id="menu-close-icon" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
+                <div class="about-image">
+                    <img src="assets/traditional_stove.jpg" alt="Traditional charcoal stove" loading="lazy">
                 </div>
             </div>
-        </nav>
-        <!-- Mobile menu -->
-        <div class="md:hidden hidden" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" class="nav-link active block">Home</a>
-                <a href="#about" class="nav-link block">About</a>
-                <a href="#news" class="nav-link block">News</a>
-                <a href="#shop" class="nav-link block">Shop</a>
-                <a href="#access" class="nav-link block">Access</a>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline">
+        <div class="container">
+            <h2 class="section-title">Our Journey Through Time</h2>
+            <p class="section-subtitle">A journey through decades of tradition, adaptation, and renewal.</p>
+            
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-year">1940s</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Founded</h3>
+                        <p class="timeline-text">Founded during the golden age of charcoal cooking</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1960s</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Growth</h3>
+                        <p class="timeline-text">Became the go-to supplier for local hawkers and families</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1980s</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Adaptation</h3>
+                        <p class="timeline-text">Adapted to changing times while maintaining quality</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2000s</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Preservation</h3>
+                        <p class="timeline-text">Preserved traditional methods as demand declined</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Reborn</h3>
+                        <p class="timeline-text">Reborn for the modern era with online ordering and delivery</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <!-- Main Content Area -->
-    <main id="page-content" class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-        <!-- Content will be injected here by JavaScript -->
-    </main>
-    
-    <!-- Shopping Cart Sidebar -->
-    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full sm:w-96 bg-gray-800 shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out z-50 flex flex-col">
-        <div class="flex items-center justify-between p-4 border-b border-gray-700">
-            <h2 class="text-xl font-bold">Your Cart</h2>
-            <button id="close-cart-button" class="p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700">
-                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-            </button>
-        </div>
-        <div id="cart-items" class="p-4 flex-grow overflow-y-auto">
-             <p class="text-gray-400">Your cart is empty.</p>
-        </div>
-        <div class="p-4 border-t border-gray-700">
-             <div class="flex justify-between items-center mb-4 text-lg">
-                <span>Subtotal:</span>
-                <span id="cart-subtotal" class="font-bold">RM 0.00</span>
+    <!-- News Section -->
+    <section id="news" class="news">
+        <div class="container">
+            <h2 class="section-title">Latest News</h2>
+            <div class="news-grid">
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="assets/charcoal_fire.jpg" alt="News image" loading="lazy">
+                    </div>
+                    <div class="news-content">
+                        <h3 class="news-title">Website Launch</h3>
+                        <p class="news-date">December 2024</p>
+                        <p class="news-excerpt">We're excited to announce the launch of our new website, bringing traditional charcoal ordering into the digital age.</p>
+                    </div>
+                </article>
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="assets/traditional_stove.jpg" alt="News image" loading="lazy">
+                    </div>
+                    <div class="news-content">
+                        <h3 class="news-title">Heritage Recognition</h3>
+                        <p class="news-date">November 2024</p>
+                        <p class="news-excerpt">Our traditional charcoal-making methods have been recognized as an important part of local culinary heritage.</p>
+                    </div>
+                </article>
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="assets/asian_stove.jpg" alt="News image" loading="lazy">
+                    </div>
+                    <div class="news-content">
+                        <h3 class="news-title">Delivery Service Expansion</h3>
+                        <p class="news-date">October 2024</p>
+                        <p class="news-excerpt">We've expanded our delivery service to cover more areas in Johor Bahru, making our premium charcoal more accessible.</p>
+                    </div>
+                </article>
             </div>
-            <button id="checkout-button" class="w-full btn btn-primary disabled:opacity-50 disabled:cursor-not-allowed" disabled>Checkout</button>
         </div>
-    </div>
-    <div id="cart-overlay" class="fixed inset-0 bg-black/60 z-40 hidden"></div>
+    </section>
 
+    <!-- Shop Section -->
+    <section id="shop" class="shop">
+        <div class="container">
+            <h2 class="section-title">Premium Charcoal Products</h2>
+            <p class="section-subtitle">Choose from our carefully curated selection of premium charcoal products, each crafted with nearly a century of expertise.</p>
+            
+            <div class="delivery-info">
+                <div class="delivery-times">
+                    <h3 class="delivery-title">Delivery Times</h3>
+                    <p class="delivery-text">9:00 AM | 11:00 AM | 2:00 PM</p>
+                </div>
+                <div class="delivery-days">
+                    <h3 class="delivery-title">Delivery Days</h3>
+                    <p class="delivery-text">Monday - Saturday</p>
+                </div>
+            </div>
+
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+
+            <div class="shopee-section">
+                <h3 class="section-title">Alternative Shopping Options</h3>
+                <p class="section-subtitle">For additional convenience and special promotions, you can also find our products on Shopee.</p>
+                <button class="btn btn-shopee">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="m9 12 2 2 4-4"></path>
+                        <path d="M21 12c.552 0 1-.448 1-1V5c0-.552-.448-1-1-1H3c-.552 0-1 .448-1 1v6c0 .552.448 1 1 1h18z"></path>
+                        <path d="M3 12v7c0 .552.448 1 1 1h16c.552 0 1-.448 1-1v-7"></path>
+                    </svg>
+                    Visit Shopee Store
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact & Access</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h3 class="contact-title">Our Location</h3>
+                            <p class="contact-text">
+                                Chop Yong Heng (荣兴柴炭)<br>
+                                No. 100, Jalan Terus<br>
+                                Johor Bahru, Johor<br>
+                                Malaysia
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h3 class="contact-title">Phone</h3>
+                            <p class="contact-text">
+                                +60 7-XXX XXXX<br>
+                                <small>Call for orders and inquiries</small>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h3 class="contact-title">Email</h3>
+                            <p class="contact-text">
+                                info@chopyongheng.com<br>
+                                <small>We'll respond within 24 hours</small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3 class="form-title">Send us a Message</h3>
+                    <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Tell us about your inquiry, order requirements, or any questions you have..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22,2 15,22 11,13 2,9 22,2"></polygon>
+                            </svg>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 border-t border-gray-700 mt-16">
-        <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-                <div>
-                    <h3 class="font-bold text-lg font-serif-sc text-amber-400">荣兴柴炭</h3>
-                    <p class="text-sm text-gray-400">CHOP YONG HENG</p>
-                    <p class="mt-2 text-sm text-gray-400">Almost 100 years of heritage, reborn for the future.</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <span class="logo-chinese">荣</span>
+                        <div class="logo-text">
+                            <span class="logo-main">Chop Yong Heng</span>
+                            <span class="logo-sub">荣兴柴炭</span>
+                        </div>
+                    </div>
+                    <p class="footer-description">Nearly a century of charcoal excellence, serving traditional cooking with modern convenience.</p>
                 </div>
-                <div>
-                    <h3 class="font-bold text-lg">Quick Links</h3>
-                    <ul class="mt-2 space-y-1">
-                        <li><a href="#home" class="text-gray-400 hover:text-white">Home</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-white">About Us</a></li>
-                        <li><a href="#shop" class="text-gray-400 hover:text-white">Shop Now</a></li>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#shop">Shop</a></li>
+                        <li><a href="#news">News</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h3 class="font-bold text-lg">Follow Us</h3>
-                    <p class="text-gray-400 mt-2">Find us on other platforms:</p>
-                    <div class="flex justify-center md:justify-start space-x-4 mt-2">
-                        <a href="#" id="shopee-link-footer" class="text-gray-400 hover:text-white" target="_blank" rel="noopener noreferrer">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M21.523,12.457c-0.34-0.186-0.733-0.218-1.113-0.093c-0.29,0.094-0.54,0.264-0.725,0.495 c-0.185,0.231-0.311,0.505-0.364,0.799c-0.053,0.294-0.03,0.598,0.067,0.882c0.098,0.284,0.266,0.542,0.489,0.752 c0.223,0.21,0.496,0.366,0.799,0.45c0.303,0.084,0.618,0.094,0.92,0.03c0.301-0.064,0.584-0.2,0.82-0.398 c0.236-0.198,0.421-0.453,0.537-0.741c0.116-0.288,0.16-0.6,0.128-0.903c-0.032-0.303-0.141-0.592-0.318-0.846 c-0.177-0.254-0.415-0.466-0.692-0.619C22.257,12.675,21.863,12.643,21.523,12.457z M12.012,0C7.29,0,4.32,1.355,4.32,4.86 c0,2.88,2.4,4.2,2.4,4.2s-2.16,0.3-2.16,2.28c0,1.98,2.16,2.22,2.16,2.22s-2.4,1.32-2.4,4.2c0,3.54,2.94,4.86,7.68,4.86 s7.68-1.32,7.68-4.86c0-2.88-2.4-4.2-2.4-4.2s2.16-0.24,2.16-2.22c0-1.98-2.16-2.28-2.16-2.28s2.4-1.32,2.4-4.2C19.692,1.355,16.74,0,12.012,0z M12.012,1.8c3.12,0,5.28,0.96,5.28,3.06c0,2.1-2.16,3-2.16,3s-0.18-2.4-3.12-2.4c-2.94,0-3.12,2.4-3.12,2.4s-2.16-0.9-2.16-3 C6.732,2.76,8.892,1.8,12.012,1.8z M6.972,10.68c0-1.02,1.2-1.62,1.2-1.62s0.78,1.68,3.84,1.68c3.06,0,3.84-1.68,3.84-1.68 s1.2,0.6,1.2,1.62c0,1.02-1.2,1.62-1.2,1.62s-0.78-1.68-3.84-1.68S8.172,12.3,8.172,12.3S6.972,11.7,6.972,10.68z M12.012,22.02 c-3.12,0-5.28-0.96-5.28-3.06c0-2.1,2.16-3,2.16-3s0.18,2.4,3.12,2.4c2.94,0,3.12-2.4,3.12-2.4s2.16,0.9,2.16,3 C17.292,21.06,15.132,22.02,12.012,22.02z"></path></svg>
-                        </a>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact</h3>
+                    <div class="footer-contact">
+                        <p>No. 100, Jalan Terus<br>Johor Bahru, Johor</p>
+                        <p>+60 7-XXX XXXX</p>
+                        <p>info@chopyongheng.com</p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Business Hours</h3>
+                    <div class="footer-hours">
+                        <p>Mon - Sat: 8:00 AM - 6:00 PM</p>
+                        <p>Sunday: Closed</p>
                     </div>
                 </div>
             </div>
-            <div class="mt-8 border-t border-gray-700 pt-8 text-center text-sm text-gray-500">
-                <p>&copy; <span id="current-year"></span> Chop Yong Heng. All Rights Reserved.</p>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Chop Yong Heng (荣兴柴炭). All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, doc, onSnapshot, addDoc, deleteDoc, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-        // --- GLOBAL STATE & CONFIG ---
-        const SHOPEE_LINK = "https://shopee.com.my/your_shopee_store"; // Replace with actual Shopee link
-        let db, auth, userId, isAuthReady = false;
-        let holidays = [];
-        let cart = [];
-        const products = [
-            { id: 1, name: 'Premium Mangrove Charcoal (红树炭)', price: 45.00, img: 'https://placehold.co/600x400/333333/FFFFFF?text=Mangrove+Charcoal' },
-            { id: 2, name: 'White Binchotan Charcoal (白炭)', price: 80.00, img: 'https://placehold.co/600x400/E0E0E0/000000?text=Binchotan' },
-            { id: 3, name: 'Easy-Light Briquettes (火种炭)', price: 25.00, img: 'https://placehold.co/600x400/555555/FFFFFF?text=Briquettes' },
-            { id: 4, name: 'Lumpwood Charcoal (什木炭)', price: 30.00, img: 'https://placehold.co/600x400/444444/FFFFFF?text=Lumpwood' }
-        ];
-
-        // --- FIREBASE INITIALIZATION ---
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'chop-yong-heng-dev';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
-
-        // --- MODIFICATION START ---
-        // Refactored to be a promise that resolves after the first auth state is confirmed.
-        function initializeFirebase() {
-             return new Promise((resolve, reject) => {
-                if (!firebaseConfig) {
-                    console.error("Firebase config not found.");
-                    return reject("Firebase config not found.");
-                }
-                
-                try {
-                    const app = initializeApp(firebaseConfig);
-                    db = getFirestore(app);
-                    auth = getAuth(app);
-                    setLogLevel('debug');
-
-                    let authInitialized = false;
-                    onAuthStateChanged(auth, user => {
-                        if (user) {
-                            userId = user.uid;
-                            console.log("User is signed in with UID:", userId);
-                            isAuthReady = true;
-                            setupHolidayListener();
-                        } else {
-                            console.log("User is signed out.");
-                            // isAuthReady remains false
-                        }
-                        
-                        // Resolve the promise on the first auth state change to unblock the app.
-                        if (!authInitialized) {
-                            authInitialized = true;
-                            resolve(); 
-                        }
-                    });
-
-                    // Sign-in logic
-                    const attemptSignIn = async () => {
-                        try {
-                            if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                                console.log("Attempting to sign in with custom token.");
-                                await signInWithCustomToken(auth, __initial_auth_token);
-                            } else {
-                                console.log("No custom token found, signing in anonymously.");
-                                await signInAnonymously(auth);
-                            }
-                        } catch (error) {
-                            console.error("Custom token sign-in failed, falling back to anonymous sign-in.", error);
-                            // onAuthStateChanged will get triggered with a new anonymous user
-                            await signInAnonymously(auth); 
-                        }
-                    };
-
-                    attemptSignIn();
-
-                } catch (error) {
-                    console.error("Firebase Initialization Error:", error);
-                    reject(error);
-                }
-            });
-        }
-        // --- MODIFICATION END ---
-
-        // --- HOLIDAY MANAGEMENT (FIRESTORE) ---
-        function setupHolidayListener() {
-            if (!isAuthReady) return;
-            const holidayCollectionPath = `artifacts/${appId}/public/data/holidays`;
-            const holidaysCollection = collection(db, holidayCollectionPath);
-            
-            onSnapshot(holidaysCollection, (snapshot) => {
-                holidays = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                console.log("Updated holidays:", holidays);
-                // If on access page, re-render the list
-                if(window.location.hash === '#access') {
-                    renderHolidayList();
-                }
-            }, error => {
-                console.error("Error fetching holidays:", error);
-            });
-        }
-        
-        async function addHoliday(dateString) {
-            if (!isAuthReady) {
-                 console.error("Auth not ready. Cannot add holiday.");
-                 alert("Connection issue. Please try again.");
-                 return;
-            }
-            const holidayCollectionPath = `artifacts/${appId}/public/data/holidays`;
-            try {
-                await addDoc(collection(db, holidayCollectionPath), { date: dateString });
-                console.log(`Holiday added: ${dateString}`);
-            } catch (error) {
-                console.error("Error adding holiday:", error);
-            }
-        }
-
-        async function deleteHoliday(docId) {
-             if (!isAuthReady) {
-                 console.error("Auth not ready. Cannot delete holiday.");
-                 alert("Connection issue. Please try again.");
-                 return;
-            }
-            const holidayDocPath = `artifacts/${appId}/public/data/holidays/${docId}`;
-            try {
-                await deleteDoc(doc(db, holidayDocPath));
-                console.log(`Holiday deleted: ${docId}`);
-            } catch(error) {
-                console.error("Error deleting holiday:", error);
-            }
-        }
-
-        // --- PAGE TEMPLATES ---
-        const pages = {
-            home: `
-            <div class="flex justify-center">
-                <div class="relative w-full max-w-6xl">
-                <img src="https://placehold.co/1200x600/1a1a1a/amber-400?text=+" alt="Charcoal Banner" class="w-full h-auto rounded-xl shadow-2xl">
-                <div class="absolute inset-0 bg-black/50 rounded-xl flex flex-col items-center justify-center p-4">
-                    <h1 class="text-4xl md:text-7xl font-bold text-white font-serif-sc tracking-wider">百年传承, 荣兴再起</h1>
-                    <p class="mt-4 text-lg md:text-2xl text-amber-400">A Century of Heritage, Reborn.</p>
-                    <p class="mt-2 max-w-2xl text-gray-300">Chop Yong Heng brings nearly 100 years of charcoal expertise into the modern age. Quality you can trust, service you can rely on.</p>
-                    <a href="#shop" class="mt-8 btn btn-primary">Explore Our Products</a>
-                </div>
-                </div>
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3 class="cart-title">Shopping Cart</h3>
+            <button class="cart-close" onclick="toggleCart()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <div class="cart-content" id="cart-content">
+            <!-- Cart items will be loaded here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="total-label">Total: </span>
+                <span class="total-amount" id="cart-total">RM 0.00</span>
             </div>
-            `,
-            about: `
-                <div class="max-w-4xl mx-auto bg-gray-800 p-8 rounded-lg shadow-xl">
-                    <h2 class="text-3xl font-bold text-center font-serif-sc text-amber-400">关于荣兴 (About Us)</h2>
-                    <div class="mt-6 space-y-6 text-gray-300 leading-relaxed text-justify">
-                        <p>Founded almost a century ago, Chop Yong Heng (荣兴柴炭) began as a humble supplier of quality charcoal to local communities. For generations, we have been the silent partner in countless family gatherings, hawker stalls, and restaurants, providing the essential fuel that brings flavors to life.</p>
-                        <p>The world has changed, but our commitment to quality has not. Today, we are 'reborn'. We are embracing the future while honoring our past. This new chapter for Chop Yong Heng blends our deep-rooted heritage with modern convenience, allowing us to serve you better. We've expanded our range, streamlined our ordering, and are now online to bring the consistent heat and quality of our charcoal directly to your doorstep.</p>
-                        <p>We are more than just a charcoal house; we are a legacy. A legacy of warmth, flavor, and community. Thank you for being part of our continuing story.</p>
-                    </div>
-                     <div class="mt-8 text-center">
-                        <img src="https://placehold.co/800x400/2a2a2a/FFFFFF?text=Our+Heritage" alt="Historical photo of the shop" class="w-full rounded-lg shadow-md">
-                        <p class="text-sm text-gray-500 mt-2">A tradition of quality since the 1920s.</p>
-                    </div>
-                </div>
-            `,
-            news: `
-                 <div class="max-w-4xl mx-auto">
-                    <h2 class="text-3xl font-bold text-center font-serif-sc text-amber-400">最新消息 (Latest News)</h2>
-                    <div class="mt-8 grid gap-8 md:grid-cols-2">
-                        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                            <h3 class="text-xl font-bold text-amber-500">Our Grand Re-Opening!</h3>
-                            <p class="text-sm text-gray-500 mb-2">June 28, 2025</p>
-                            <p class="text-gray-300">We are thrilled to announce our official website launch! After months of work, we're ready to bring our heritage products to you online. Explore, shop, and let us know what you think!</p>
-                        </div>
-                        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                            <h3 class="text-xl font-bold text-amber-500">New Binchotan Stock Arrived</h3>
-                            <p class="text-sm text-gray-500 mb-2">June 25, 2025</p>
-                            <p class="text-gray-300">A fresh batch of our premium White Binchotan charcoal has just arrived. Perfect for high-heat grilling, this batch is of exceptional quality. Limited stock available!</p>
-                        </div>
-                    </div>
-                </div>
-            `,
-            shop: `
-                <div>
-                    <div class="text-center mb-8">
-                         <h2 class="text-3xl font-bold font-serif-sc text-amber-400">在线商店 (Online Shop)</h2>
-                         <p class="mt-2 text-gray-400">Prefer another platform? We're also on Shopee!</p>
-                         <a href="${SHOPEE_LINK}" id="shopee-link-shop" target="_blank" rel="noopener noreferrer" class="inline-block mt-2 btn btn-secondary">Visit our Shopee Store</a>
-                    </div>
-                    <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <!-- Products will be injected here -->
-                    </div>
-                    
-                    <!-- Checkout Form Modal -->
-                    <div id="checkout-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
-                        <div class="bg-gray-800 rounded-lg shadow-xl p-6 md:p-8 w-full max-w-2xl max-h-full overflow-y-auto relative">
-                             <button id="close-checkout-modal" class="absolute top-4 right-4 p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700">
-                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-                            </button>
-                            <h2 class="text-2xl font-bold mb-6 text-center text-amber-400">Delivery Details</h2>
-                            <form id="checkout-form">
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div>
-                                        <label for="name" class="block text-sm font-medium text-gray-300">Full Name</label>
-                                        <input type="text" id="name" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:ring-amber-500 focus:border-amber-500 text-white">
-                                    </div>
-                                    <div>
-                                        <label for="phone" class="block text-sm font-medium text-gray-300">Phone Number</label>
-                                        <input type="tel" id="phone" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:ring-amber-500 focus:border-amber-500 text-white">
-                                    </div>
-                                </div>
-                                <div class="mt-4">
-                                    <label for="address" class="block text-sm font-medium text-gray-300">Delivery Address</label>
-                                    <textarea id="address" rows="3" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:ring-amber-500 focus:border-amber-500 text-white"></textarea>
-                                </div>
-                                <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div>
-                                        <label for="delivery-date" class="block text-sm font-medium text-gray-300">Delivery Date</label>
-                                        <input type="date" id="delivery-date" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:ring-amber-500 focus:border-amber-500 text-white">
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-300">Delivery Time</label>
-                                        <div id="time-slots-container" class="mt-2 space-y-2">
-                                            <p class="text-gray-500 text-sm">Please select a date first.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mt-6 text-right">
-                                     <button type="submit" class="btn btn-primary">Confirm Order (Cash on Delivery)</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            `,
-            access: `
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    <div class="bg-gray-800 p-8 rounded-lg shadow-xl">
-                        <h2 class="text-2xl font-bold font-serif-sc text-amber-400">联络我们 (Contact Us)</h2>
-                        <div class="mt-6 space-y-4 text-gray-300">
-                            <p><strong>Address:</strong> 123, Jalan Arang, 81100 Johor Bahru, Johor, Malaysia.</p>
-                            <p><strong>Phone:</strong> +60 12-345 6789</p>
-                            <p><strong>Email:</strong> contact@chopyongheng.com</p>
-                            <p><strong>Operating Hours:</strong> 8:00 AM - 5:00 PM (Mon - Sat)</p>
-                        </div>
-                        <div class="mt-6 h-64 md:h-80 bg-gray-700 rounded-lg">
-                           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127641.1633192039!2d103.6114188390885!3d1.4804194380121758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da12c6c5143e19%3A0x33b45a47e68c98e!2sJohor%20Bahru%2C%20Johor%2C%20Malaysia!5e0!3m2!1sen!2smy!4v1719546252989!5m2!1sen!2smy" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-lg"></iframe>
-                        </div>
-                    </div>
-                    <div class="bg-gray-800 p-8 rounded-lg shadow-xl">
-                        <h2 class="text-2xl font-bold font-serif-sc text-amber-400">假日管理 (Holiday Management)</h2>
-                        <p class="text-sm text-gray-400 mb-4">Set dates when deliveries will be unavailable.</p>
-                        <form id="holiday-form" class="flex items-end gap-2">
-                            <div>
-                                <label for="holiday-date" class="block text-sm font-medium text-gray-300">Select Date</label>
-                                <input type="date" id="holiday-date" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:ring-amber-500 focus:border-amber-500 text-white">
-                            </div>
-                            <button type="submit" class="btn btn-secondary !py-2 !px-4">Add Holiday</button>
-                        </form>
-                        <div class="mt-6">
-                            <h3 class="font-bold">Upcoming Holidays:</h3>
-                            <ul id="holiday-list" class="mt-2 space-y-2">
-                                <!-- Holidays will be injected here -->
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            `,
-        };
+            <button class="btn btn-primary cart-checkout" onclick="proceedToCheckout()">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
 
-        // --- ROUTING LOGIC ---
-        function renderPage() {
-            const path = window.location.hash.slice(1) || 'home';
-            const pageContent = document.getElementById('page-content');
-            
-            // Render the page content
-            pageContent.innerHTML = pages[path] || pages['home'];
-            pageContent.style.animation = 'none';
-            requestAnimationFrame(() => {
-                 pageContent.style.animation = 'fadeIn 0.5s ease-in-out';
-            });
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
 
+    <!-- Admin Panel (Hidden) -->
+    <div class="admin-panel" id="admin-panel" style="display: none;">
+        <div class="admin-content">
+            <h3 class="admin-title">Holiday Management</h3>
+            <div class="admin-calendar" id="admin-calendar">
+                <!-- Calendar will be generated here -->
+            </div>
+            <div class="admin-actions">
+                <button class="btn btn-primary" onclick="saveHolidays()">Save Changes</button>
+                <button class="btn btn-secondary" onclick="closeAdmin()">Close</button>
+            </div>
+        </div>
+    </div>
 
-            updateNavLinks(path);
-            
-            // Page-specific initializations
-            if (path === 'shop') {
-                renderProducts();
-                attachShopEventListeners();
-                updateCartUI();
-            } else if (path === 'access') {
-                attachAccessEventListeners();
-                renderHolidayList();
-            }
-        }
-
-        function updateNavLinks(activePath) {
-            document.querySelectorAll('.nav-link').forEach(link => {
-                if (link.getAttribute('href') === `#${activePath}`) {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
-        }
-        
-        // --- SHOP LOGIC ---
-        // Update addToCart to always add a new line for the same product (if you want to allow duplicates)
-        function addToCart(productId) {
-            const product = products.find(p => p.id == productId);
-            // Always add as a new line (for true "individual" lines)
-            cart.push({ ...product, quantity: 1 });
-            updateCartUI();
-            openCart();
-        }
-
-        // Update updateCartUI to show quantity controls
-        function updateCartUI() {
-            const cartItemsContainer = document.getElementById('cart-items');
-            const cartSubtotalEl = document.getElementById('cart-subtotal');
-            const checkoutBtn = document.getElementById('checkout-button');
-
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = `<p class="text-gray-400">Your cart is empty.</p>`;
-                checkoutBtn.disabled = true;
-            } else {
-                cartItemsContainer.innerHTML = cart.map((item, idx) => `
-                    <div class="flex items-center justify-between py-2 border-b border-gray-700">
-                        <div>
-                            <p class="font-semibold">${item.name}</p>
-                            <p class="text-sm text-gray-400">RM ${item.price.toFixed(2)}</p>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <button class="qty-btn px-2 py-1 bg-gray-700 rounded text-white" data-idx="${idx}" data-action="decrease">-</button>
-                            <input type="number" min="1" class="qty-input w-12 text-center bg-gray-700 rounded text-white" value="${item.quantity}" data-idx="${idx}">
-                            <button class="qty-btn px-2 py-1 bg-gray-700 rounded text-white" data-idx="${idx}" data-action="increase">+</button>
-                            <span class="font-bold ml-2">RM ${(item.price * item.quantity).toFixed(2)}</span>
-                            <button class="remove-from-cart-btn text-red-500 hover:text-red-400 p-1" data-idx="${idx}">
-                                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" /></svg>
-                            </button>
-                        </div>
-                    </div>
-                `).join('');
-                checkoutBtn.disabled = false;
-            }
-
-            const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-            cartSubtotalEl.textContent = `RM ${subtotal.toFixed(2)}`;
-        }
-
-        // Remove by index (since now lines can be duplicated)
-        function removeFromCart(idx) {
-            cart.splice(idx, 1);
-            updateCartUI();
-        }
-
-        // Quantity change handler
-        function changeCartQuantity(idx, newQty) {
-            if (newQty < 1) return;
-            cart[idx].quantity = newQty;
-            updateCartUI();
-        }
-
-        // --- SHOP EVENT LISTENERS ---
-        function attachShopEventListeners() {
-            document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => addToCart(e.currentTarget.dataset.id));
-            });
-            document.getElementById('cart-items').addEventListener('click', (e) => {
-                if (e.target.closest('.remove-from-cart-btn')) {
-                    removeFromCart(Number(e.target.closest('.remove-from-cart-btn').dataset.idx));
-                }
-                if (e.target.classList.contains('qty-btn')) {
-                    const idx = Number(e.target.dataset.idx);
-                    const action = e.target.dataset.action;
-                    let qty = cart[idx].quantity;
-                    if (action === 'increase') qty++;
-                    if (action === 'decrease' && qty > 1) qty--;
-                    changeCartQuantity(idx, qty);
-                }
-            });
-            document.getElementById('cart-items').addEventListener('input', (e) => {
-                if (e.target.classList.contains('qty-input')) {
-                    const idx = Number(e.target.dataset.idx);
-                    let qty = parseInt(e.target.value, 10);
-                    if (isNaN(qty) || qty < 1) qty = 1;
-                    changeCartQuantity(idx, qty);
-                }
-            });
-            document.getElementById('checkout-button')?.addEventListener('click', showCheckoutModal);
-        }
-        
-        // --- CHECKOUT LOGIC ---
-        function showCheckoutModal() {
-            const modal = document.getElementById('checkout-modal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            closeCart();
-            
-            // Set min date for delivery to tomorrow
-            const dateInput = document.getElementById('delivery-date');
-            const today = new Date();
-            const tomorrow = new Date(today);
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            dateInput.min = tomorrow.toISOString().split('T')[0];
-            
-            dateInput.addEventListener('change', updateAvailableTimeSlots);
-            document.getElementById('close-checkout-modal').addEventListener('click', closeCheckoutModal);
-            document.getElementById('checkout-form').addEventListener('submit', handleOrderSubmit);
-        }
-
-        function closeCheckoutModal() {
-            const modal = document.getElementById('checkout-modal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
-
-        function updateAvailableTimeSlots() {
-            const dateInput = document.getElementById('delivery-date');
-            const container = document.getElementById('time-slots-container');
-            const selectedDate = new Date(dateInput.value + 'T00:00:00'); // Ensure local timezone
-            const dayOfWeek = selectedDate.getDay(); // 0=Sunday, 1=Monday...
-            const dateString = dateInput.value;
-
-            const isHoliday = holidays.some(h => h.date === dateString);
-
-            if (dayOfWeek === 0) {
-                container.innerHTML = `<p class="text-red-400 text-sm">Sorry, no deliveries on Sundays.</p>`;
-                return;
-            }
-            if (isHoliday) {
-                container.innerHTML = `<p class="text-red-400 text-sm">Sorry, we are closed for a holiday on this date.</p>`;
-                return;
-            }
-
-            const timeSlots = ['09:00 AM', '11:00 AM', '02:00 PM'];
-            container.innerHTML = timeSlots.map((time, index) => `
-                <label class="flex items-center space-x-2 bg-gray-700 p-2 rounded-md hover:bg-gray-600 cursor-pointer">
-                    <input type="radio" name="delivery-time" value="${time}" required class="focus:ring-amber-500 h-4 w-4 text-amber-600 border-gray-500">
-                    <span>${time}</span>
-                </label>
-            `).join('');
-        }
-        
-        function handleOrderSubmit(e) {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            const orderDetails = {
-                name: formData.get('name'),
-                phone: formData.get('phone'),
-                address: formData.get('address'),
-                deliveryDate: formData.get('delivery-date'),
-                deliveryTime: formData.get('delivery-time'),
-                items: cart,
-                total: cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
-                orderDate: new Date().toISOString()
-            };
-
-            console.log("Order Submitted:", orderDetails);
-
-            alert(`Thank you, ${orderDetails.name}! Your order has been placed. We will contact you for confirmation. Total: RM ${orderDetails.total.toFixed(2)}.`);
-            
-            cart = [];
-            updateCartUI();
-            closeCheckoutModal();
-            e.target.reset();
-        }
-
-        // --- ACCESS PAGE LOGIC ---
-        function attachAccessEventListeners() {
-            document.getElementById('holiday-form')?.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const dateInput = document.getElementById('holiday-date');
-                if (dateInput.value) {
-                    addHoliday(dateInput.value);
-                    dateInput.value = '';
-                }
-            });
-            document.getElementById('holiday-list')?.addEventListener('click', (e) => {
-                if (e.target.closest('.delete-holiday-btn')) {
-                    const docId = e.target.closest('.delete-holiday-btn').dataset.id;
-                    deleteHoliday(docId);
-                }
-            });
-        }
-        
-        function renderHolidayList() {
-            const listEl = document.getElementById('holiday-list');
-            if(!listEl) return;
-
-            if (holidays.length === 0) {
-                listEl.innerHTML = `<li><p class="text-gray-500">No holidays scheduled.</p></li>`;
-            } else {
-                // Sort holidays chronologically
-                const sortedHolidays = [...holidays].sort((a,b) => new Date(a.date) - new Date(b.date));
-                listEl.innerHTML = sortedHolidays.map(h => `
-                    <li class="flex justify-between items-center bg-gray-700 p-2 rounded-md">
-                        <span>${h.date}</span>
-                        <button class="delete-holiday-btn text-red-500 hover:text-red-400 p-1" data-id="${h.id}">
-                             <svg class="h-5 w-5 pointer-events-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" /></svg>
-                        </button>
-                    </li>
-                `).join('');
-            }
-        }
-        
-        // --- GENERAL EVENT LISTENERS & INITIALIZATION ---
-        function init() {
-            // Mobile menu toggle
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const menuOpenIcon = document.getElementById('menu-open-icon');
-            const menuCloseIcon = document.getElementById('menu-close-icon');
-
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-                menuOpenIcon.classList.toggle('hidden');
-                menuCloseIcon.classList.toggle('hidden');
-            });
-            
-            // Close mobile menu on link click
-            document.querySelectorAll('#mobile-menu a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                    menuOpenIcon.classList.remove('hidden');
-                    menuCloseIcon.classList.add('hidden');
-                });
-            });
-
-            // Cart toggle
-            document.getElementById('cart-button-mobile').addEventListener('click', openCart);
-            document.getElementById('close-cart-button').addEventListener('click', closeCart);
-            document.getElementById('cart-overlay').addEventListener('click', closeCart);
-            
-            // Set footer year
-            document.getElementById('current-year').textContent = new Date().getFullYear();
-
-            // Set Shopee links
-            document.getElementById('shopee-link-footer').href = SHOPEE_LINK;
-            
-            // Handle routing on hash change and initial load
-            window.addEventListener('hashchange', renderPage);
-            
-            // --- MODIFICATION START ---
-            // Changed to an async iife to await for firebase and handle errors.
-            (async () => {
-                try {
-                    await initializeFirebase();
-                    console.log("Firebase initialization complete. Rendering page.");
-                    renderPage(); // Initial page render
-                } catch (error) {
-                    console.error("Fatal: Could not initialize application.", error);
-                    document.getElementById('page-content').innerHTML = `
-                        <div class="text-center text-red-400 bg-red-900/20 p-8 rounded-lg">
-                            <h2 class="text-2xl font-bold">Application Error</h2>
-                            <p class="mt-2">Could not connect to the database. Please refresh the page to try again.</p>
-                        </div>
-                    `;
-                }
-            })();
-            // --- MODIFICATION END ---
-        }
-        
-        init();
-
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
+
