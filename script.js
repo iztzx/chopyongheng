@@ -586,3 +586,7 @@ if ('serviceWorker' in navigator) {
     });
 }
 
+document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('nav-menu').classList.toggle('active');
+});
+
